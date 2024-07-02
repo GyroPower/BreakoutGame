@@ -13,3 +13,4 @@ void GameObject::draw(spriteRenderer& renderer) {
 	renderer.drawSprite(this->sprite, this->position, this->size, this->rotation,
 		this->color);
 }
+

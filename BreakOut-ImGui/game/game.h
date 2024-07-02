@@ -19,9 +19,9 @@ enum GameState {
 
 enum Direction {
 	UP,
+	RIGHT,
 	DOWN,
-	LEFT,
-	RIGHT
+	LEFT
 };
 
 
@@ -36,6 +36,8 @@ public:
 	bool keys[1024];
 	bool keysProcessed[1024];
 	bool show_keys_pressed;
+	bool close;
+	GLFWwindow* currentWindow;
 
 	unsigned int width, height;
 	unsigned int lives;
@@ -47,10 +49,11 @@ public:
 	void init();
 
 	void processInput(float dt);
-	void update(float dt);
+	void update(float dt, GLFWwindow* window);
 	void render();
 	void renderGUI();
 	void resetLevel();
+	void resetPlayer();
 	void spawnPowerUps(GameObject& block);
 	void updatePowerUps(float dt);
 

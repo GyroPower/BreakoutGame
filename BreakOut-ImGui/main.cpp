@@ -90,6 +90,7 @@ int main() {
 		
 		BreakOut.renderGUI();
 		BreakOut.processInput(deltaTime);
+		BreakOut.update(deltaTime, window);
 		
 		// Rendering
 		ImGui::Render();
@@ -126,10 +127,9 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
 	
-	
+
 	if (key >= 0 && key < 1024) {
-
-
+		
 
 		if (action == GLFW_PRESS)
 			BreakOut.keys[key] = true;

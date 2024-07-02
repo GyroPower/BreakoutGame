@@ -10,7 +10,7 @@ ballObject::ballObject(glm::vec2 pos, float radius, glm::vec2 velocity,
 	radius(radius), stuck(true), sticky(false), passThrought(false) { }
 
 glm::vec2 ballObject::move(float dt, unsigned int windowWidth) {
-	if (this->stuck) {
+	if (!this->stuck) {
 		this->position += this->velocity * dt;
 
 		if (this->position.x <= 0.0f) {
