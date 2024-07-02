@@ -134,19 +134,7 @@ void GUI::showOneVariable(std::string variableName, std::string var, bool move,
 
 	std::string allText = variableName + ": " + var;
 	ImVec2 textSize = ImGui::CalcTextSize(allText.c_str());
-	glm::vec2 text_size(textSize.x, textSize.y);
-	this->showVec2("variable size", text_size);
-
-	glm::vec2 text_size_scale(text_size.x * scale, text_size.y * scale);
-	this->showVec2("size scaled", text_size_scale);
-
-	glm::vec2 text_size_scale_scale(text_size.x * scale * scale, text_size.y * scale);
-	this->showVec2("size scaled^2", text_size_scale_scale);
-
-	glm::vec2 text_size_scale_byTwo(text_size.x * 2, text_size.y * scale);
-	this->showVec2("size scaled*2", text_size_scale_byTwo);
-
-
+	
 	if (!move) {
 		flags |= ImGuiWindowFlags_NoDecoration;
 		ImGui::SetNextWindowPos(ImVec2(posX, posY));
