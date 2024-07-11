@@ -155,6 +155,7 @@
     <ClCompile Include="libraries\include\ImGui\misc\freetype\imgui_freetype.cpp" />
     <ClCompile Include="libraries\include\stb_image\stb_image.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="particleGen\particleGen.cpp" />
     <ClCompile Include="postProcessor\postProcessor.cpp" />
     <ClCompile Include="resourceManager\resourceManager.cpp" />
     <ClCompile Include="shaderProgram\shaderProgram.cpp" />
@@ -520,6 +521,7 @@
     <ClInclude Include="libraries\include\ImGui\imstb_truetype.h" />
     <ClInclude Include="libraries\include\ImGui\misc\freetype\imgui_freetype.h" />
     <ClInclude Include="libraries\include\stb_image\stb_image.h" />
+    <ClInclude Include="particleGen\particleGen.h" />
     <ClInclude Include="postProcessor\postProcessor.h" />
     <ClInclude Include="resourceManager\resourceManager.h" />
     <ClInclude Include="shaderProgram\shaderProgram.h" />
@@ -663,6 +665,8 @@
     <None Include="libraries\include\glm\gtx\vector_angle.inl" />
     <None Include="libraries\include\glm\gtx\vector_query.inl" />
     <None Include="libraries\include\glm\gtx\wrap.inl" />
+    <None Include="shaders\postProcessor\postProcessor.frag" />
+    <None Include="shaders\postProcessor\postProcessor.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,6 +14,7 @@
 enum GameState {
 	GAME_ACTIVE,
 	GAME_MENU,
+	GAME_PAUSE_MENU,
 	GAME_WIN
 };
 
@@ -23,6 +24,7 @@ enum Direction {
 	DOWN,
 	LEFT
 };
+
 
 
 class Game {
@@ -36,6 +38,7 @@ public:
 	bool keys[1024];
 	bool keysProcessed[1024];
 	bool show_keys_pressed;
+	bool initGame;
 	bool close;
 	GLFWwindow* currentWindow;
 

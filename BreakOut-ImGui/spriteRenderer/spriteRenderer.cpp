@@ -53,7 +53,8 @@ void spriteRenderer::drawSprite(Texture2D& texture, glm::vec2 position, glm::vec
 	model = glm::scale(model, glm::vec3(size, 1.0f));
 
 	this->shader.setMat4("model", model);
-	this->shader.setVec3("color", color);
+	this->shader.setVec4("color", glm::vec4(color,1.0f));
+	this->shader.setFloat("scale", 1.0f);
 
 	glActiveTexture(GL_TEXTURE0);
 	texture.Bind();

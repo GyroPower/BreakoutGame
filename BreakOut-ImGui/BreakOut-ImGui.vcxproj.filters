@@ -84,6 +84,9 @@
     <ClCompile Include="GUI\GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="particleGen\particleGen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\game.h">
@@ -1175,6 +1178,9 @@
     <ClInclude Include="GUI\GUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="particleGen\particleGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="libraries\include\glm\detail\func_common.inl">
@@ -1585,5 +1591,7 @@
     <None Include="libraries\include\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="shaders\postProcessor\postProcessor.frag" />
+    <None Include="shaders\postProcessor\postProcessor.vs" />
   </ItemGroup>
 </Project>

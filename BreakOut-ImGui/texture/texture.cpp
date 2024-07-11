@@ -28,6 +28,7 @@ void Texture2D::Bind() {
 
 }
 
+
 unsigned int Texture2D::getId() const {
 	return this->id;
 }

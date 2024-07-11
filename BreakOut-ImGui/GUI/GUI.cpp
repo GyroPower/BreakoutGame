@@ -6,7 +6,7 @@ GUI::GUI(unsigned int w_width, unsigned int w_height) :
 
 GUI::~GUI(){ }
 
-void GUI::mainMenuWindow(GameState& state, unsigned int& level, bool& close) {
+void GUI::mainMenuWindow(GameState& state, unsigned int& level, bool& close, bool& initGame) {
 
 	ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration 
 		 | ImGuiWindowFlags_NoResize ;
@@ -34,9 +34,11 @@ void GUI::mainMenuWindow(GameState& state, unsigned int& level, bool& close) {
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(1.0, 0.6, 0, 1.0));
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(1.0, 0.7, 0, 1.0));
 		
-		if (ImGui::Button("Start")) 
+		if (ImGui::Button("Start")) {
+			initGame = true;
 			state = GAME_ACTIVE;
-			
+		
+		}
 		
 		std::string level_in = "Level: " + std::to_string(level);
 
@@ -74,6 +76,47 @@ void GUI::mainMenuWindow(GameState& state, unsigned int& level, bool& close) {
 		ImGui::PopID();
 
 	}
+	ImGui::End();
+
+}
+
+void GUI::pauseMenuWindow(GameState& state) {
+
+	ImGuiWindowFlags flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize;
+
+	const ImGuiViewport* viewport = ImGui::GetMainViewport();
+
+	ImGui::SetNextWindowPos(viewport->Pos);
+	ImGui::SetNextWindowSize(viewport->Size);
+
+	if (ImGui::Begin("pause menu", NULL, flags)) {
+		ImGui::SetWindowFontScale(2.0f);
+		
+		ImVec2 text_size = ImGui::CalcTextSize("Pause Menu");
+		ImGui::SetCursorPos(ImVec2(viewport->Size.x / 2 - text_size.x / 2, viewport->Size.y / 6));
+		ImGui::TextColored(ImVec4(1.0, 0.5, 0, 1.0), "Pause Menu");
+
+		ImGui::PushID(1);
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(1.0, 0.5, 0, 1.0));
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(1.0, 0.6, 0, 1.0));
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(1.0, 0.7, 0, 1.0));
+		
+		text_size = ImGui::CalcTextSize("Continue");
+		ImGui::SetCursorPos(ImVec2(viewport->Size.x / 2 - text_size.x / 2, viewport->Size.y / 4));
+
+		if (ImGui::Button("Continue")) {
+			state = GAME_ACTIVE;
+		}
+		
+		text_size = ImGui::CalcTextSize("Main menu");
+		ImGui::SetCursorPos(ImVec2(viewport->Size.x / 2 - text_size.x / 2, viewport->Size.y / 2));
+		if (ImGui::Button("Main menu"))
+			state = GAME_MENU;
+
+		ImGui::PopStyleColor(3);
+		ImGui::PopID();
+	}
+
 	ImGui::End();
 
 }
@@ -128,7 +171,7 @@ void GUI::showVec2(std::string vec_name, glm::vec2& vec) {
 }
 
 void GUI::showOneVariable(std::string variableName, std::string var, bool move, 
-	int posX, int posY, float scale, float alpha) {
+	int posX, int posY, float scale, float alpha, int width, int height) {
 
 	ImGuiWindowFlags flags = ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoCollapse ;
 
@@ -138,12 +181,18 @@ void GUI::showOneVariable(std::string variableName, std::string var, bool move,
 	if (!move) {
 		flags |= ImGuiWindowFlags_NoDecoration;
 		ImGui::SetNextWindowPos(ImVec2(posX, posY));
-		
-	}
 
-	ImGui::SetNextWindowSize(ImVec2(textSize.x * 2 , textSize.y * scale));
+		ImGui::SetNextWindowSize(ImVec2(textSize.x * 2 - textSize.x / 4, textSize.y * scale));
+
+	}
+	if (width > 0 && height > 0)
+		ImGui::SetNextWindowSize(ImVec2(width, height));
+
+	
+
 	ImGui::SetNextWindowBgAlpha(alpha);
 	
+
 	std::string window_name = "variable " + variableName;
 	if (ImGui::Begin(window_name.c_str(), NULL, flags)) {
 		ImGui::SetWindowFontScale(scale);

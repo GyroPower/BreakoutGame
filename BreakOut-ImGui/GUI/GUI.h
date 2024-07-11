@@ -17,11 +17,14 @@ public:
 	GUI(unsigned int w_width, unsigned int w_height);
 	~GUI();
 
-	void mainMenuWindow(GameState& state, unsigned int& level, bool& close);
+	void mainMenuWindow(GameState& state, unsigned int& level, bool& close, bool& initGame);
 	void showKeysPressed(bool& show_keys_pressed);
 	void showVec2(std::string vec_name, glm::vec2& vec);
+	void pauseMenuWindow(GameState& state);
+	void loseWindow(GameState& state);
 	void showOneVariable(std::string variableName, std::string var, bool move = true,
-		int posX = 0, int posY = 0, float scale = 1.0f, float alpha = 1.0f);
+		int posX = 0, int posY = 0, float scale = 1.0f, float alpha = 1.0f,int width = 0,
+		int height = 0);
 
 
 
